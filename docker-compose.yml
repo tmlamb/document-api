@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  server:
+    env_file:
+      - .env # configure postgres
+    build: .
+    volumes:
+      - .:/go/src/github.com/tmlamb/document-api
+    ports:
+      - "8080:8080"
+    command: >
+      bash -c 'while !</dev/tcp/db/${PGPORT}; do sleep 1; done; 
+      tern migrate --migrations migrations && 
+      go run cmd/document-api/main.go'
+    depends_on:
+      - db
+  db:
+    image: "postgres" # use latest official postgres version
+    env_file:
+      - postgres.env # configure postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data/ # persist data even if container shuts downvolumes:
+    ports:
+      - "${PGPORT}"
+volumes:
+  db-data:

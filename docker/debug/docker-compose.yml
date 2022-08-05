@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  document-api:
+    build:
+      dockerfile: docker/debug/Dockerfile
+      context: ../../
+    ports:
+      - 2345:2345
+      - 8480:8080
+    command: dlv debug --headless --listen=:2345 --api-version=2 --log main.go
