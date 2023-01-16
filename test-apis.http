@@ -1,0 +1,46 @@
+http://localhost:8080/accounts
+
+###
+
+POST http://localhost:8080/accounts HTTP/1.1
+content-type: application/json
+
+{
+    "userName": "sample"
+}
+
+###
+
+http://localhost:8080/accounts/46117fb0-84a4-4abd-abe7-b5e2502dc1c1
+
+###
+
+PUT http://localhost:8080/accounts/46117fb0-84a4-4abd-abe7-b5e2502dc1c1 HTTP/1.1
+content-type: application/json
+
+{
+    "userName": "tom"
+}
+
+###
+
+POST http://localhost:8080/accounts/46117fb0-84a4-4abd-abe7-b5e2502dc1c1/documents HTTP/1.1
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="uploadFile"; filename="README.md"
+Content-Type: text/plain
+
+< ./README.md
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+
+
+http://localhost:8080/accounts/46117fb0-84a4-4abd-abe7-b5e2502dc1c1/documents/index
+
+###
+
+http://localhost:8080/accounts/46117fb0-84a4-4abd-abe7-b5e2502dc1c1/documents/b4686c28-d26b-42c9-a9ed-63c165397553
+
+###

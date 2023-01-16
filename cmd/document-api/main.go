@@ -24,9 +24,9 @@ func router() http.Handler {
 	myRouter.HandleFunc("/accounts/{accountId}", handler.DeleteAccount).Methods("DELETE")
 	myRouter.HandleFunc("/accounts/{accountId}/documents", handler.UploadDocument).Methods("POST")
 	myRouter.HandleFunc("/accounts/{accountId}/documents/index", handler.ReturnDocumentsIndex).Methods("GET")
-	myRouter.HandleFunc("/accounts/{accountId}/documents/{id}", handler.DownloadDocument).Methods("GET")
-	myRouter.HandleFunc("/accounts/{accountId}/documents/{id}", handler.UpdateDocument).Methods("PUT")
-	myRouter.HandleFunc("/accounts/{accountId}/documents/{id}", handler.DeleteDocument).Methods("DELETE")
+	myRouter.HandleFunc("/accounts/{accountId}/documents/{documentId}", handler.DownloadDocument).Methods("GET")
+	myRouter.HandleFunc("/accounts/{accountId}/documents/{documentId}", handler.UpdateDocument).Methods("PUT")
+	myRouter.HandleFunc("/accounts/{accountId}/documents/{documentId}", handler.DeleteDocument).Methods("DELETE")
 	return myRouter
 }
 

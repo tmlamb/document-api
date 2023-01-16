@@ -83,13 +83,13 @@ func DownloadDocument(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	accountId, err := uuid.Parse(vars["accountId"])
 	if err != nil {
-		log.Println(err)
+		log.Printf("Error parsing accountId: %v\n", err)
 		w.WriteHeader(400)
 		return
 	}
 	documentId, err := uuid.Parse(vars["documentId"])
 	if err != nil {
-		log.Println(err)
+		log.Printf("Error parsing documentId: %v\n", err)
 		w.WriteHeader(400)
 		return
 	}

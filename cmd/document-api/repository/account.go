@@ -64,7 +64,7 @@ func SaveAccount(account model.Account) (*model.Account, error) {
 
 	err = conn.QueryRow(context.Background(), "insert into accounts(data) values($1) returning account_id;", account).Scan(&accountId)
 	if err != nil {
-		log.Println(err)
+		log.Printf("Error inserting row: %v\n", err)
 		return nil, err
 	}
 

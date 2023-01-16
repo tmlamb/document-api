@@ -40,7 +40,7 @@ func CreateNewAccount(w http.ResponseWriter, r *http.Request) {
 	var account model.Account
 	err := json.Unmarshal(reqBody, &account)
 	if err != nil {
-		log.Println(err)
+		log.Printf("Error unmarshalling request body (%q): %v\n", reqBody, err)
 		w.WriteHeader(400)
 		return
 	}
@@ -57,7 +57,7 @@ func CreateNewAccount(w http.ResponseWriter, r *http.Request) {
 
 	err = encoder.Encode(newAccount)
 	if err != nil {
-		log.Println(err)
+		log.Printf("Error encoding response: %v\n", err)
 		w.WriteHeader(500)
 		return
 	}
